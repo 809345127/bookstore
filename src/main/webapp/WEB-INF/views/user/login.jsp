@@ -7,6 +7,7 @@
 <title>尚硅谷会员登录页面</title>
 <!-- 使用include指令将每个页面中公共的部门包含进来 -->
 <%@ include file="/WEB-INF/views/include/base.jsp" %>
+<script type="text/javascript" src="static/script/md5.js"></script>
 <script type="text/javascript">
 	$(function(){
 		//给登录按钮绑定单击事件
@@ -17,6 +18,7 @@
 				alert("用户名不能为空！");
 				return false;
 			}
+			
 			//获取用户输入的密码
 			var password = $("#pwd").val();
 			if(password==""){
@@ -52,7 +54,7 @@
 								<span class="errorMsg">${empty msg?"请输入用户名和密码":msg }</span>
 							</div>
 							<div class="form">
-								<form action="UserServlet?method=login" method="post">
+								<form action="user/doLogin" method="post">
 <!-- 									<input type="hidden" name="method" value="login" > -->
 									<label>用户名称：</label>
 									<input value="${param.username }" class="itxt" type="text" placeholder="请输入用户名" autocomplete="off" tabindex="1" name="username" id="username"/>

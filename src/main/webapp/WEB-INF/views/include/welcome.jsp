@@ -3,7 +3,7 @@
 				<c:choose>
 					<c:when test="${empty sessionScope.user }">
 						<div>
-							<a href="user/login">登录</a> | 
+							<a href="user/toLogin">登录</a> | 
 							<a href="user/regist">注册</a> &nbsp;&nbsp;
 							<a href="cart/cart">购物车</a>
 							<a href="manager/manager">后台管理</a>
