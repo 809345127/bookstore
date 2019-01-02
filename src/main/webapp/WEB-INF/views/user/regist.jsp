@@ -19,7 +19,7 @@
 		//给用户名输入框绑定change事件
 		$("#username").change(function(){
 			var username = $("#username").val();
-			var url = "UserServlet?method=checkUsername";
+			var url = "user/checkUsername";
 			var param = {"username":username};
 			
 			$.post(url,param,function(res){
@@ -103,7 +103,7 @@
 								<span class="errorMsg" id="msg">${msg }</span>
 							</div>
 							<div class="form">
-								<form action="UserServlet?method=regist" method="post">
+								<form action="user/doRegist" method="post">
 <!-- 									<input type="hidden" name="method" value="regist" > -->
 									<label>用户名称：</label>
 									<input  value="${param.username }" class="itxt" type="text" placeholder="请输入用户名" autocomplete="off" tabindex="1" name="username" id="username" />
