@@ -17,4 +17,10 @@ public class UserServiceImp implements UserService {
 		return userMapper.selectUserForLogin(user);
 	}
 
+	@Override
+	public User checkUsername(String username) {
+		
+		return userMapper.selectUserByName(username);
+	}
+
 }

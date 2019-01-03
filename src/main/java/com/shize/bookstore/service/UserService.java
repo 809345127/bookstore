@@ -6,4 +6,6 @@ public interface UserService {
 
 	public User login(User user);
 
+	public User checkUsername(String username);
+
 }

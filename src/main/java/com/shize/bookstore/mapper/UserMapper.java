@@ -6,4 +6,6 @@ public interface UserMapper {
 
 	public User selectUserForLogin(User user);
 
+	public User selectUserByName(String username);
+
 }

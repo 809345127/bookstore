@@ -21,11 +21,19 @@
 			var username = $("#username").val();
 			var url = "user/checkUsername";
 			var param = {"username":username};
-			
-			$.post(url,param,function(res){
-				var $msg = $("#msg");
-				$msg.html(res);
-			});
+		 $.ajax({
+                url:url,
+                type:"post",
+                data:param,
+                dataType:"json",
+                success:function(res){
+               	 var $msg = $("#msg");
+    				$msg.html(res.message);
+                },
+                error:function(){
+                     alert("出现异常了！");
+                }
+            });
 		});
 		
 		//給驗證碼圖片綁定單機事件

@@ -6,4 +6,9 @@
 		from users
 		where username = #{username} and password = #{password}
 	</select>
+	<select id="selectUserByName" resultType="com.shize.bookstore.beans.User">
+		select id
+		from users
+		where username = #{username}
+	</select>
 </mapper>
