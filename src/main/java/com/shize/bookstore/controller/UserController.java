@@ -50,17 +50,27 @@ public class UserController {
 		String kaptcha = (String) session.getAttribute("KAPTCHA_SESSION_KEY");
 		session.removeAttribute("KAPTCHA_SESSION_KEY");
 
+		AjaxResult ajaxResult = new AjaxResult();
+
 		if (code != null && code.equals(kaptcha)) {
-			/*
-			 * // 调用userService的注册的方法 boolean regist = userService.regist(user); if (regist)
-			 * { // 用户名已存在，设置一个错误消息并放到request域中 request.setAttribute("msg", "用户名已存在！"); //
-			 * 转发到注册页面
-			 * request.getRequestDispatcher("/pages/user/regist.jsp").forward(request,
-			 * response); } else { // 用户名可用，将用户保存到数据库中 userService.saveUser(user); //
-			 * 重定向到注册成功页面 response.sendRedirect(request.getContextPath() +
-			 * "/pages/user/regist_success.jsp"); }
-			 */
-			return null;
+			// 验证用户名是否可用
+			try {
+				User user1 = userService.checkUsername(user.getUsername());
+
+				if (user1 != null) {
+					map.put("msg", "用户名已存在");
+					return "user/regist";
+				} else {
+					// 用户名可用，注册
+					userService.regist(user);
+					return "user/regist_success";
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				map.put("msg", "注册失败");
+				return "user/regist";
+			}
+
 		} else {
 			map.put("msg", "验证码错误请重新输入");
 			return "user/regist";
@@ -73,7 +83,7 @@ public class UserController {
 	public AjaxResult checkUsername(String username, Map<String, Object> map) {
 		User user = userService.checkUsername(username);
 		AjaxResult ajaxResult = new AjaxResult();
-		
+
 		if (user != null) {
 			ajaxResult.setMessage("用户名已存在");
 		} else {

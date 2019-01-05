@@ -8,4 +8,6 @@ public interface UserService {
 
 	public User checkUsername(String username);
 
+	public void regist(User user);
+
 }
