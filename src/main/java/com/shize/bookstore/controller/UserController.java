@@ -3,6 +3,7 @@ package com.shize.bookstore.controller;
 import java.io.IOException;
 import java.util.Map;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -90,5 +91,11 @@ public class UserController {
 			ajaxResult.setMessage("<font style='color:green'>用户名可用！</font>");
 		}
 		return ajaxResult;
+	}
+	
+	@RequestMapping("/loginOut")
+	public String loginOut(HttpSession session) {
+		session.invalidate();
+		return "redirect:/index";
 	}
 }

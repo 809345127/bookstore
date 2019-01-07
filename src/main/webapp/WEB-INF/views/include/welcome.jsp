@@ -15,7 +15,7 @@
 							<span>欢迎<span class="um_span">${sessionScope.user.username }</span>光临尚硅谷书城</span>
 							<a href="cart/cart">购物车</a>
 							<a href="order">我的订单</a>
-							<a href="UserServlet?method=loginOut">注销</a>&nbsp;&nbsp;
+							<a href="user/loginOut">注销</a>&nbsp;&nbsp;
 							<a href="index">返回主页</a>
 						</div>
 					</c:otherwise>
