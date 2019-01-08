@@ -5,6 +5,7 @@ import com.shize.bookstore.beans.Page;
 
 public interface BookService {
 
-	Page<Book> getPageBooksByPrice(int pageNo, int minPrice, int maxPrice);
+	Page<Book> getPageBooksByPrice(String pageNo, String minPrice, String maxPrice);
+
 
 }

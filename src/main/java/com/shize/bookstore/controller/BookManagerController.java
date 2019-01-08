@@ -22,12 +22,13 @@ public class BookManagerController {
 	}
 
 	@RequestMapping("/getBooks")
-	public String getBooks(@RequestParam(value="pageNo",required = false) int pageNo,
-			@RequestParam(value="minPrice",required = false) int minPrice,
-			@RequestParam(value="maxPrice",required = false) int maxPrice, Map<String, Object> map) {
-		// 调用bookService中获取带分页及价格范围的图书的方法
-		/*Page<Book> pageBooks = bookService.getPageBooksByPrice(pageNo, minPrice, maxPrice);
-		map.put("page", pageBooks);*/
+	public String getBooks(@RequestParam(value="pageNo",required = false) String pageNo,
+			@RequestParam(value="minPrice",required = false) String minPrice,
+			@RequestParam(value="maxPrice",required = false) String maxPrice, Map<String, Object> map) {
+//		 调用bookService中获取带分页及价格范围的图书的方法
+		Page<Book> pageBooks = bookService.getPageBooksByPrice(pageNo, minPrice, maxPrice);
+		map.put("page", pageBooks);
+		
 		return "manager/book_manager";
 	}
 	
