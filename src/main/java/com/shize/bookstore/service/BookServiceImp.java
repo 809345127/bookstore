@@ -1,10 +1,16 @@
 package com.shize.bookstore.service;
 
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.shize.bookstore.beans.Book;
 import com.shize.bookstore.beans.Page;
+import com.shize.bookstore.mapper.BookMapper;
 
 @Service
 public class BookServiceImp implements BookService {
@@ -37,9 +43,23 @@ public class BookServiceImp implements BookService {
 		// 将页码设置到page对象中
 		page.setPageNo(defaultPageNo);
 		
-		bookMapper.selectCount
 		
-		return null;
+		Map<String, Object> param = new HashMap<>();
+		param.put("defaultPageNo", defaultPageNo);
+		param.put("defaultMinPrice", defaultMinPrice);
+		param.put("defaultMaxPrice", defaultMaxPrice);
+		param.put("startIndex", page.getStartIndex());
+		param.put("pagesize", Page.PAGE_SIZE);
+		
+		
+		int totalCount = bookMapper.selectCount(param);
+		page.setTotalRecord(totalCount);
+		
+		List<Book> books = bookMapper.selectBooksByPageno(param);
+		page.setList(books);
+		
+		
+		return page;
 	}
 
 }

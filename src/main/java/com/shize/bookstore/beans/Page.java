@@ -60,6 +60,11 @@ public class Page<T> implements Serializable{
 		this.totalRecord = totalRecord;
 	}
 
+	public int getStartIndex() {
+		return (pageNo-1)*PAGE_SIZE;
+	}
+	
+	
 	// 判断是否有上一页
 	public boolean isHasPrev() {
 		return getPageNo() > 1;
