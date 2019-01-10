@@ -18,9 +18,9 @@ public class IndexController {
 	private BookService bookService;
 
 	@RequestMapping("/index")
-	public String index(@RequestParam(value = "pageNo", required = false, defaultValue = "null") String pageNo,
-			@RequestParam(value = "minPrice", required = false, defaultValue = "null") String minPrice,
-			@RequestParam(value = "maxPrice", required = false, defaultValue = "null") String maxPrice,
+	public String index(@RequestParam(value = "pageNo", required = false) String pageNo,
+			@RequestParam(value = "min", required = false) String minPrice,
+			@RequestParam(value = "max", required = false) String maxPrice,
 			Map<String, Object> map) {
 		// 调用bookService中获取带分页及价格范围的图书的方法
 		Page<Book> pageBooks = bookService.getPageBooksByPrice(pageNo, minPrice, maxPrice);

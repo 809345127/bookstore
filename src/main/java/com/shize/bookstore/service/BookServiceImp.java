@@ -62,4 +62,9 @@ public class BookServiceImp implements BookService {
 		return page;
 	}
 
+	@Override
+	public int saveBook(Book book) {
+		return bookMapper.insertBook(book);
+	}
+
 }

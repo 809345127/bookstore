@@ -7,5 +7,7 @@ public interface BookService {
 
 	Page<Book> getPageBooksByPrice(String pageNo, String minPrice, String maxPrice);
 
+	int saveBook(Book book);
+
 
 }

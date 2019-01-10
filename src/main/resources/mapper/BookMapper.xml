@@ -11,7 +11,10 @@
 		resultType="com.shize.bookstore.beans.Book">
 		select id,title,author,price,sales,stock,img_path imgPath
 		from books where price between #{defaultMinPrice} and
-		#{defaultMaxPrice} limit #{startIndex},#{pagesize}
+		#{defaultMaxPrice} order by books.id desc limit #{startIndex},#{pagesize} 
 	</select>
 
+	<insert id="insertBook" >
+		insert into books values(null,#{title},#{author},#{price},#{sales},#{stock},#{imgPath})
+	</insert>
 </mapper>	

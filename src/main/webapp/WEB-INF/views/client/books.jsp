@@ -22,9 +22,10 @@
 		<c:if test="${!empty requestScope.page.list }">
 		<div id="book">
 			<div class="book_cond">
-				<form action="BookClientServlet?method=getPageBooksByPrice" method="post">
-				价格：<input type="text" name="min"> 元 - 
-					<input type="text" name="max"> 元 
+				<form action="index" method="post">
+				价格：<input type="text" name="min" value="${param.min }">  元 -
+				 
+					<input type="text" name="max" value="${param.max }"> 元 
 					<input type="submit" value="查询">
 				</form>
 			</div>
@@ -87,8 +88,8 @@
 		
 		<div id="page_nav">
 			<c:if test="${page.pageNo > 1 }">
-				<a href="index?min=${min }&max=${max}">首页</a>
-				<a href="index?pageNo=${page.prev }&min=${min }&max=${max}">上一页</a>
+				<a href="index?min=${param.min }&max=${param.max}">首页</a>
+				<a href="index?pageNo=${page.prev }&min=${param.min }&max=${param.max}">上一页</a>
 			</c:if>
 			<!-- 
 				1.当总页数小于5时
@@ -117,15 +118,15 @@
 			
 			<c:forEach begin="${begin }" end="${end }" var="index">
 				<c:if test="${page.pageNo == index }">
-					[<a href="index?pageNo=${index }&min=${min }&max=${max}">${index }</a>]
+					[<a href="index?pageNo=${index }&min=${param.min }&max=${param.max}">${index }</a>]
 				</c:if>
 				<c:if test="${page.pageNo != index }">
-					<a href="index?pageNo=${index }&min=${min }&max=${max}">${index }</a>
+					<a href="index?pageNo=${index }&min=${param.min }&max=${param.max}">${index }</a>
 				</c:if>
 			</c:forEach>
 			<c:if test="${page.pageNo < page.totalPageNo }">
-				<a href="index?pageNo=${page.next }&min=${min }&max=${max}">下一页</a>
-				<a href="index?pageNo=${page.totalPageNo }&min=${min }&max=${max}">末页</a>
+				<a href="index?pageNo=${page.next }&min=${param.min }&max=${param.max}">下一页</a>
+				<a href="index?pageNo=${page.totalPageNo }&min=${param.min }&max=${param.max}">末页</a>
 			</c:if>
 			当前是第${page.pageNo }页，共${page.totalPageNo }页，共${page.totalRecord }条记录 到第<input value="${page.pageNo }" name="pn" id="pn_input"/>页
 			<input type="button" value="确定" id="sub">
@@ -141,7 +142,7 @@
 						//发送请求
 //	 					window.location.href="BookClientServlet?method=getPageBooksByPrice&pageNo="+pageNo;
 //	 					location.href="BookClientServlet?method=getPageBooksByPrice&pageNo="+pageNo;
-						location="index?pageNo="+pageNo+"&min=${min }&max=${max}";
+						location="index?pageNo="+pageNo+"&min=${param.min }&max=${param.max}";
 					}
 
 				});

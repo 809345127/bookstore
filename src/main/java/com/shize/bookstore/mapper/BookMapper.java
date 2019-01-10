@@ -11,4 +11,6 @@ public interface BookMapper {
 
 	List<Book> selectBooksByPageno(Map<String, Object> param);
 
+	int insertBook(Book book);
+
 }

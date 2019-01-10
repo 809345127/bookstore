@@ -1,10 +1,7 @@
 package com.shize.bookstore.controller;
 
-import java.io.IOException;
 import java.util.Map;
 
-import javax.mail.Session;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,8 +47,6 @@ public class UserController {
 	public String doRegist(User user, String code, HttpSession session, Map<String, Object> map) {
 		String kaptcha = (String) session.getAttribute("KAPTCHA_SESSION_KEY");
 		session.removeAttribute("KAPTCHA_SESSION_KEY");
-
-		AjaxResult ajaxResult = new AjaxResult();
 
 		if (code != null && code.equals(kaptcha)) {
 			// 验证用户名是否可用
