@@ -45,7 +45,7 @@
 					<td>${book.price }</td>
 					<td>${book.sales }</td>
 					<td>${book.stock }</td>
-					<td><a href="BookManagerServlet?method=getBookById&bookId=${book.id }">修改</a></td>
+					<td><a href="manager/toUpdate?bookId=${book.id }&pageNo=${page.pageNo}">修改</a></td>
 					<td><a id="${book.title }" class="deleteA" href="BookManagerServlet?method=deleteBookById&bookId=${book.id }">删除</a></td>
 				</tr>		
 			</c:forEach>	

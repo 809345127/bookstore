@@ -66,7 +66,7 @@
 			$("#saveBtn").click(function() {
 				$.ajax({
             		type:"POST",
-            		url:"manager/doAdd",
+            		url:"manager/doUpdate",
             		data:{
             			title:$("#ftitle").val(),
             			price:$("#fprice").val(),
@@ -82,7 +82,7 @@
             		success:function(result){
             			layer.close(index);
             			if(result.success){
-            				window.location.href="manager/getBooks"; //页面加载完成时自动发起异步分页查询请求
+            				window.location.href="manager/getBooks?pageNo=${param.pageNo}"; //页面加载完成时自动发起异步分页查询请求
             			}else{
             				layer.msg(result.message, {time:1000, icon:5, shift:6});
             			}

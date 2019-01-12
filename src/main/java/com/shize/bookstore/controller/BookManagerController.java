@@ -52,6 +52,28 @@ public class BookManagerController {
 		return ajaxResult;
 	}
 	
+	@RequestMapping("/toUpdate")
+	public String toUpdate(String bookId,Map<String, Object> map) {
+		
+		Book book = bookService.selectBookById(bookId);
+		map.put("book", book);
+		return "manager/book_edit2";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/doUpdate")
+	public AjaxResult doUpdate(Book book,Map<String, Object> map) {
+		
+		AjaxResult ajaxResult = new AjaxResult();
+		int i = bookService.updateBookById(book);
+		if (i==1) {
+			ajaxResult.setSuccess(true);
+		}else {
+			ajaxResult.setSuccess(false);
+		}
+		return ajaxResult;
+	}
+	
 	
 	
 }

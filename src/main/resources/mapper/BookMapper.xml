@@ -11,10 +11,25 @@
 		resultType="com.shize.bookstore.beans.Book">
 		select id,title,author,price,sales,stock,img_path imgPath
 		from books where price between #{defaultMinPrice} and
-		#{defaultMaxPrice} order by books.id desc limit #{startIndex},#{pagesize} 
+		#{defaultMaxPrice} order by books.id desc limit
+		#{startIndex},#{pagesize}
 	</select>
 
-	<insert id="insertBook" >
-		insert into books values(null,#{title},#{author},#{price},#{sales},#{stock},#{imgPath})
+	<select id="selectBookById"
+		resultType="com.shize.bookstore.beans.Book">
+		select id,title,author,price,sales,stock,img_path imgPath
+		from books where id = #{id}
+	</select>
+
+	<insert id="insertBook">
+		insert into books
+		values(null,#{title},#{author},#{price},#{sales},#{stock},#{imgPath})
 	</insert>
+
+	<update id="updateBookById">
+		update books set title = #{title} , author =
+		#{author} , price = #{price} , sales = #{sales} , stock = #{stock}
+		where id = #{id}
+	</update>
+
 </mapper>	

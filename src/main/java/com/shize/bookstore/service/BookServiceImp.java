@@ -67,4 +67,14 @@ public class BookServiceImp implements BookService {
 		return bookMapper.insertBook(book);
 	}
 
+	@Override
+	public Book selectBookById(String bookId) {
+		return bookMapper.selectBookById(bookId);
+	}
+
+	@Override
+	public int updateBookById(Book book) {
+		return bookMapper.updateBookById(book);
+	}
+
 }

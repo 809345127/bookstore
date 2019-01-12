@@ -9,5 +9,9 @@ public interface BookService {
 
 	int saveBook(Book book);
 
+	Book selectBookById(String bookId);
+
+	int updateBookById(Book book);
+
 
 }
