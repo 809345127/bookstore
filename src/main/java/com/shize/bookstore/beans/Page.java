@@ -61,7 +61,7 @@ public class Page<T> implements Serializable{
 	}
 
 	public int getStartIndex() {
-		return (pageNo-1)*PAGE_SIZE;
+		return (getPageNo()-1)*PAGE_SIZE;
 	}
 	
 	

@@ -45,15 +45,20 @@ public class BookServiceImp implements BookService {
 		
 		
 		Map<String, Object> param = new HashMap<>();
-		param.put("defaultPageNo", defaultPageNo);
+		
 		param.put("defaultMinPrice", defaultMinPrice);
 		param.put("defaultMaxPrice", defaultMaxPrice);
-		param.put("startIndex", page.getStartIndex());
-		param.put("pagesize", Page.PAGE_SIZE);
+		
 		
 		
 		int totalCount = bookMapper.selectCount(param);
 		page.setTotalRecord(totalCount);
+		
+		
+		
+		param.put("defaultPageNo", page.getPageNo());
+		param.put("startIndex", page.getStartIndex());
+		param.put("pagesize", Page.PAGE_SIZE);
 		
 		List<Book> books = bookMapper.selectBooksByPageno(param);
 		page.setList(books);
